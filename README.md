@@ -28,22 +28,10 @@ import dask.dataframe as dd
 import glob
 from dask.distributed import Client, LocalCluster
 
-# Set up a local Dask cluster
-cluster = LocalCluster(n_workers=4, threads_per_worker=1, memory_limit='10GB')
-client = Client(cluster)
-
-# Load the Parquet dataset
-import dask.dataframe as dd
-import glob
-from dask.distributed import Client, LocalCluster
-
-# Set up a local Dask cluster
 cluster = LocalCluster(n_workers=5, threads_per_worker=1, memory_limit='10GB')
 client = Client(cluster)
 
-# Load the Parquet dataset
 df = dd.read_parquet("/mnt/SMB_share/mark/flight_competition/competition_files_update_Oct11/", engine='pyarrow')
-#df = df.repartition(partition_size="1GB")
 df["first_five"] = df["flight_id"].astype(str).str[:5]
 df.to_parquet(
     "/mnt/SMB_share/mark/flight_competition/repartitioned_from_fcompute/",
@@ -54,6 +42,7 @@ df.to_parquet(
 )
 client.close()
 ```
+
 
 
 
