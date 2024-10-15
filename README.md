@@ -5,15 +5,22 @@ A model created for the PRC data challenge
 required packages
 
 ```
+pandas
+numpy
 dask
 dask[dataframe]
 fastparquet
 dask[distributed]
 bokeh>=3.1.0
+openap
+openap-top
+pandarallel
+fastmeteo
+metpy
 ```
 
 
-## ETL
+## Basic ETL
 
 1. Download project files
 
@@ -43,6 +50,28 @@ df.to_parquet(
 client.close()
 ```
 
+## Use OpenAP to calculate idealized flight paths for each flight in competition and submission sets
+
+See openap.ipynb
+
+## Create features from flight path data
+
+See get_trajectory_characteristics.ipynb
+
+## Clean up data and finalize stage I features
+
+| field | description | perc_avail |
+| --- | --- | --- | 
+| flight_id | (str) unique identifier | 100% |
+| month | (int) month of flight | 100% |
+| day_of_week | (int) day of week of flight | 100% |
+| hour_in_local | (int) hour of flight in local time zone. This uses the first time zone from country_timezones package| 100% |
+| adep | (str) departure airport code | 100% |
+| ades | (str) destination airport code | 100% |
+| aircraft_type | (str) aircraft type code | 100% |
+| replacer | (str) alternative aircraft type to be used for weight regression when original code is not available in openap. This is usually the aircraft type in the challenge data with the closest average MTOW. | 100% |
+| airline | (str) unique airline code | 100% |
 
 
+## Clean up data and finalize stage II features
 
