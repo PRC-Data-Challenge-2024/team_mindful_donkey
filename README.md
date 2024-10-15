@@ -17,6 +17,11 @@ openap-top
 pandarallel
 fastmeteo
 metpy
+airportsdata
+tabulate
+future
+requests
+h20 (https://docs.h2o.ai/h2o/latest-stable/h2o-docs/downloading.html#install-in-python)
 ```
 
 
@@ -60,7 +65,9 @@ See get_trajectory_characteristics.ipynb
 
 ## Clean up data and finalize stage I features
 
-| field | description | perc_avail |
+See clean_up_phase_one.ipynb
+
+| field | description | percent available |
 | --- | --- | --- | 
 | flight_id | (str) unique identifier | 100% |
 | month | (int) month of flight | 100% |
@@ -83,6 +90,11 @@ See get_trajectory_characteristics.ipynb
 | alt_per_s | (float) first_cruise_alt divided by time_to_cruise, rounded to one decimal point | 34% |
 | est_load_lf_adjusted | (float) mtow_fill minus oew_fill minus total_fuel_fill to get the estimated possible max passenger load, multiplied by the average monthly load factor in Europe for takeoff month  | 100% |
 | est_tow | (float) est_load_lf_adjusted plus oew_fill plus total_fuel_fill for an estimated total TOW | 100% |
+
+## Train phase one model
+
+See train_stage_one.ipynb
+
 
 
 ## Clean up data and finalize stage II features
