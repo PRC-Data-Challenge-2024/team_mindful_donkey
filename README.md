@@ -85,9 +85,9 @@ See clean_up_phase_one.ipynb
 | total_fuel_fill | (int) estimated fuel weight in kg from openap for adep, ades and aircraft type or replacer. If airport not available, uses linear regression value from great circle distance rounded. | 100% |
 | tow | (float) TOW provided by challenge dataset, kg rounded | 100% |
 | dataset | (str) "challenge" or "submission" dataset | 100% |
-| first_cruise_alt | (float) altitude in km when aircraft first reached cruise classification for four intervals consecutively, rounded | 34% |
-| time_to_cruise | (float) seconds from takeoff to first cruise in first_cruise_alt rounded | 34% |
-| alt_per_s | (float) first_cruise_alt divided by time_to_cruise, rounded to one decimal point | 34% |
+| first_cruise_alt | (float) altitude in km when aircraft first reached cruise classification for four intervals consecutively, rounded | 84% |
+| time_to_cruise | (float) seconds from takeoff to first cruise in first_cruise_alt rounded | 84% |
+| alt_per_s | (float) first_cruise_alt divided by time_to_cruise, rounded to one decimal point | 84% |
 | est_load_lf_adjusted | (float) mtow_fill minus oew_fill minus total_fuel_fill to get the estimated possible max passenger load, multiplied by the average monthly load factor in Europe for takeoff month  | 100% |
 | est_tow | (float) est_load_lf_adjusted plus oew_fill plus total_fuel_fill for an estimated total TOW | 100% |
 
