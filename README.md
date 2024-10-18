@@ -93,7 +93,7 @@ See clean_up_phase_one.ipynb
 
 ## Train phase one model
 
-See train_stage_one.ipynb
+See train_stage_I.ipynb
 
 
 
