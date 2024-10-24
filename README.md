@@ -2,9 +2,9 @@
 
 ## General model description
 
-This model was created for the [PRC Challenge](https://ansperformance.eu/study/data-challenge/) by Team Mindful Donkey. The model has a three stage structure.
+This model was created for the [PRC Challenge](https://ansperformance.eu/study/data-challenge/) by Team Mindful Donkey. This work is copyrighted by Mark Fahey (2024) and free to use under the terms of the GNU GPLv3 license (see TK). 
 
-The first stage is an supervised learning ensemble model trained on the data available for each flight _excluding_ the trajectory data. This is essentially a baseline model that estimates the tow based on the expected fuel amount and cargo capacity for each flight. The second stage is a collection of models trained on the minute-by-minute cleaned trajectory data, with a different ensemble model for each aircraft type. The third stage integrates the first and second stages and also includes some summary data on the overall trajectory shape and the accuracy of the stage two models. 
+The model has a three stage structure. The first stage is an supervised learning ensemble model trained on the data available for each flight _excluding_ the trajectory data. This is essentially a baseline model that estimates the tow based on the expected fuel amount and cargo capacity for each flight. The second stage is a collection of models trained on the minute-by-minute cleaned trajectory data, with a different ensemble model for each aircraft type. The third stage integrates the first and second stages and also includes some summary data on the overall trajectory shape and the accuracy of the stage two models. 
 
 ||||||||
 | --- | --- | --- | --- | --- | --- | --- |
@@ -13,23 +13,24 @@ The first stage is an supervised learning ensemble model trained on the data ava
 Calculated macro characteristics of flight and model accuracy | &rarr; |
 
 
+### Model accuracy
 
+The final TOW estimates have a RMSE of 2,683, compared to a test data RMSE of 2,398. In the test data, 95 percent of all estimates were within TK percent of their correct TOW values. 
 
+(Compare stages here)
 
+### Running a single prediction
 
+The TK script takes data for a single flight and runs the full data processing and prediction pipeline to give a single TOW value. It requires two csv files as inputs: 
 
+(Describe csv files here)
+
+Running a single prediction takes about TK seconds. 
 
 
 ## Model creation
 
-
-
-### packages required to replicate this work
-
-```
-
-```
-
+Python packages required for replicating this work can be found in the requirements.txt file. All processing work and training of this model was done on a single local computer on the CPU (Intel Xeon E5-2430). 
 
 ### Basic ETL
 
