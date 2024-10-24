@@ -25,7 +25,7 @@ The TK script takes data for a single flight and runs the full data processing a
 
 (Describe csv files here)
 
-Running a single prediction takes about TK seconds. 
+Running a single prediction takes about TK seconds. This is for demonstration purposes and it is more efficient to run batches as described below.
 
 
 ## Model creation

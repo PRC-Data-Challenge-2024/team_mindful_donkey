@@ -15,3 +15,4 @@ tabulate
 future
 requests
 h20 (https://docs.h2o.ai/h2o/latest-stable/h2o-docs/downloading.html#install-in-python)
+geopandas
