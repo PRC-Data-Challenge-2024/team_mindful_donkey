@@ -27,23 +27,7 @@ Calculated macro characteristics of flight and model accuracy | &rarr; |
 ### packages required to replicate this work
 
 ```
-pandas
-numpy
-dask
-dask[dataframe]
-dask[distributed]
-fastparquet
-bokeh>=3.1.0
-openap
-openap-top
-pandarallel
-fastmeteo
-metpy
-airportsdata
-tabulate
-future
-requests
-h20 (https://docs.h2o.ai/h2o/latest-stable/h2o-docs/downloading.html#install-in-python)
+
 ```
 
 
