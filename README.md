@@ -93,7 +93,11 @@ See clean_up_phase_one.ipynb
 
 ## Train phase one model
 
-See train_stage_I.ipynb
+See train_stage_one.ipynb
+
+We used [H2O AutoML]([https://pages.github.com/](https://docs.h2o.ai/h2o/latest-stable/h2o-docs/automl.html)) 
+
+
 
 
 
