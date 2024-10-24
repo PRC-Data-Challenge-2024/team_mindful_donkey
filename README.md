@@ -1,8 +1,8 @@
-# prc_challenge
+# Mindful Donkey PRC Model
 
 ## General model description
 
-This model was created for the PRC Challenge by Team Mindful Donkey. The model has a three stage structure.
+This model was created for the [PRC Challenge](https://ansperformance.eu/study/data-challenge/) by Team Mindful Donkey. The model has a three stage structure.
 
 The first stage is an supervised learning ensemble model trained on the data available for each flight _excluding_ the trajectory data. This is essentially a baseline model that estimates the tow based on the expected fuel amount and cargo capacity for each flight. The second stage is a collection of models trained on the minute-by-minute cleaned trajectory data, with a different ensemble model for each aircraft type. The third stage integrates the first and second stages and also includes some summary data on the overall trajectory shape and the accuracy of the stage two models. 
 
@@ -11,6 +11,16 @@ The first stage is an supervised learning ensemble model trained on the data ava
 | STAGE I  -- Baseline TOW estimates from general flight information | &rarr;  |  |
 | STAGE II -- Models for each aircraft type to estimate TOW at each point in flight| &rarr; | STAGE III -- Model to integrate estimates  | &rarr; | Final TOW estimates
 Calculated macro characteristics of flight and model accuracy | &rarr; |
+
+
+
+
+
+
+
+
+
+## Model creation
 
 
 
@@ -37,7 +47,7 @@ h20 (https://docs.h2o.ai/h2o/latest-stable/h2o-docs/downloading.html#install-in-
 ```
 
 
-## Basic ETL
+### Basic ETL
 
 1. Download project files
 
@@ -67,15 +77,15 @@ df.to_parquet(
 client.close()
 ```
 
-## Use OpenAP to calculate idealized flight paths for each flight in competition and submission sets
+### Use OpenAP to calculate idealized flight paths for each flight in competition and submission sets
 
 See openap.ipynb
 
-## Create features from flight path data
+### Create features from flight path data
 
 See get_trajectory_characteristics.ipynb
 
-## Clean up data and finalize stage I features
+### Clean up data and finalize stage I features
 
 See clean_up_phase_one.ipynb
 
@@ -103,7 +113,7 @@ See clean_up_phase_one.ipynb
 | est_load_lf_adjusted | (float) mtow_fill minus oew_fill minus total_fuel_fill to get the estimated possible max passenger load, multiplied by the average monthly load factor in Europe for takeoff month  | 100% |
 | est_tow | (float) est_load_lf_adjusted plus oew_fill plus total_fuel_fill for an estimated total TOW | 100% |
 
-## Train phase one model
+### Train phase one model
 
 See train_stage_one.ipynb
 
@@ -112,5 +122,9 @@ We used [H2O AutoML](https://pages.github.com/](https://docs.h2o.ai/h2o/latest-s
 The training RMSE for this model was 2036, the cross-validation RMSE was 2753 and the test RMSE was 2749. 
 
 
-## Clean up data and finalize stage II features
+### Clean up data and finalize stage II features
 
+
+
+
+## Applying the model to a single flight
