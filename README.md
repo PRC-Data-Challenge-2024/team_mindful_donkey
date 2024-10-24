@@ -1,16 +1,28 @@
 # prc_challenge
-A model created for the PRC data challenge
+
+## General model description
+
+This model was created for the PRC Challenge by Team Mindful Donkey. The model has a three stage structure.
+
+The first stage is an supervised learning ensemble model trained on the data available for each flight _excluding_ the trajectory data. This is essentially a baseline model that estimates the tow based on the expected fuel amount and cargo capacity for each flight. The second stage is a collection of models trained on the minute-by-minute cleaned trajectory data, with a different ensemble model for each aircraft type. The third stage integrates the first and second stages and also includes some summary data on the overall trajectory shape and the accuracy of the stage two models. 
+
+||||||||
+| --- | --- | --- | --- | --- | --- | --- |
+| STAGE I  -- Baseline TOW estimates from general flight information | &rarr;  |  |
+| STAGE II -- Models for each aircraft type to estimate TOW at each point in flight| &rarr; | STAGE III -- Model to integrate estimates  | &rarr; | Final TOW estimates
+Calculated macro characteristics of flight and model accuracy | &rarr; |
 
 
-required packages
+
+### packages required to replicate this work
 
 ```
 pandas
 numpy
 dask
 dask[dataframe]
-fastparquet
 dask[distributed]
+fastparquet
 bokeh>=3.1.0
 openap
 openap-top
@@ -95,10 +107,9 @@ See clean_up_phase_one.ipynb
 
 See train_stage_one.ipynb
 
-We used [H2O AutoML]([https://pages.github.com/](https://docs.h2o.ai/h2o/latest-stable/h2o-docs/automl.html)) 
+We used [H2O AutoML](https://pages.github.com/](https://docs.h2o.ai/h2o/latest-stable/h2o-docs/automl.html)) to test 30 possible models and assemble 16 into an ensemble model. The model models were tested using 5-fold cross validation and a GLM metalearner algorithm. Ultimately, 8/10 GM models, 6/10 XGBoost models, 1/2 DRF models and 1/7 DeepLearning models were incorporated into the ensemble. One GLM model was tested but not included. 
 
-
-
+The training RMSE for this model was 2036, the cross-validation RMSE was 2753 and the test RMSE was 2749. 
 
 
 ## Clean up data and finalize stage II features
