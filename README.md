@@ -2,7 +2,7 @@
 
 ## General model description
 
-This model was created for the [PRC Challenge](https://ansperformance.eu/study/data-challenge/) by Team Mindful Donkey. This work is copyrighted by Mark Fahey (2024) and free to use under the terms of the GNU GPLv3 license (see TK). 
+This model was created for the [PRC Challenge](https://ansperformance.eu/study/data-challenge/) by Team Mindful Donkey. This work is copyrighted by Mark Fahey (2024) and free to use under the terms of the GNU GPLv3 license (see gpl-3.0.txt). 
 
 The model has a three stage structure. The first stage is an supervised learning ensemble model trained on the data available for each flight _excluding_ the trajectory data. This is essentially a baseline model that estimates the tow based on the expected fuel amount and cargo capacity for each flight. The second stage is a collection of models trained on the minute-by-minute cleaned trajectory data, with a different ensemble model for each aircraft type. The third stage integrates the first and second stages and also includes some summary data on the overall trajectory shape and the accuracy of the stage two models. 
 
