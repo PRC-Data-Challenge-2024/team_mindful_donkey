@@ -25,3 +25,5 @@ tqdm
 shutil
 pathlib
 glob
+pytz
+shapely
