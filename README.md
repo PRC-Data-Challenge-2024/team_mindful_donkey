@@ -103,14 +103,13 @@ The final STAGE I training features and descriptions are listed below:
 
 ### Train STAGE I model
 
-See [train_stage_one](https://github.com/mtfahey/prc_challenge/blob/main/notebooks/train_stage_one.ipynb) notebook. 
+See [train_stage_one](https://github.com/mtfahey/prc_challenge/blob/main/notebooks/train_stage_one.ipynb) notebook. We used [H2O AutoML](https://pages.github.com/](https://docs.h2o.ai/h2o/latest-stable/h2o-docs/automl.html)) to test 30 possible models and assemble 16 into an ensemble model. The model models were tested using fold cross validation and a GLM metalearner algorithm. Flight ids were divided into fold groups to prevent cross-training within a flight. Ultimately, 8/10 GM models, 6/10 XGBoost models, 1/2 DRF models and 1/7 DeepLearning models were incorporated into the ensemble. One GLM model was tested but not included. 
 
-We used [H2O AutoML](https://pages.github.com/](https://docs.h2o.ai/h2o/latest-stable/h2o-docs/automl.html)) to test 30 possible models and assemble 16 into an ensemble model. The model models were tested using fold cross validation and a GLM metalearner algorithm. Flight ids were divided into fold groups to prevent cross-training within a flight. Ultimately, 8/10 GM models, 6/10 XGBoost models, 1/2 DRF models and 1/7 DeepLearning models were incorporated into the ensemble. One GLM model was tested but not included. 
+The training RMSE for this model was 2036, the cross-validation RMSE was 2753 and the test RMSE was 2749. The final STAGE I model used for submission [can be found here](https://drive.google.com/drive/folders/1epyKt1HCyRLLWGmdF4-Q0Zjyqk_vF64P?usp=drive_link) (too large for github). 
 
-The training RMSE for this model was 2036, the cross-validation RMSE was 2753 and the test RMSE was 2749. 
+### Clean up data and finalize STAGE II features
 
 
-### Clean up data and finalize stage II features
 
 | field | description | percent available |
 | --- | --- | --- | 
