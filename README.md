@@ -73,7 +73,7 @@ Formulas from Yoshiki Kato's [weather_paramters](https://github.com/Yoshiki443/w
 
 ### Clean up data and finalize stage I features
 
-See clean_up_phase_one notebook. 
+See [clean_up_phase_one notebook](). This notebook restructures the data and adds some additional features, including the day of the week, the hour in local time, and an adjusted cargo load weight value based on the average monthly aircraft load factors in Europe extracted from monthly IATA publications.
 
 | field | description | percent available |
 | --- | --- | --- | 
