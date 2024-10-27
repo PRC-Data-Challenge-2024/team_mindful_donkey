@@ -21,7 +21,6 @@ The final TOW estimates have a RMSE of 2,683, compared to a test data RMSE of 2,
 
 
 
-
 ## Model creation
 
 Python packages required for replicating this work can be found in [requirements.txt](https://github.com/mtfahey/prc_challenge/blob/main/requirements.txt). All processing work and training of this model was done locally via CPU (Intel Xeon E5-2430). 
@@ -154,4 +153,5 @@ See [predict_stage_two](https://github.com/mtfahey/prc_challenge/blob/main/noteb
 
 ### Train STAGE III model
 
-See [train_stage_three](https://github.com/mtfahey/prc_challenge/blob/main/notebooks/train_stage_three.ipynb) notebook. STAGE III model was trained via H2OAutoML over 50 RMSE-optimizing models from results of STAGE I and STAGE II as described above. Final model [can be found here](https://drive.google.com/drive/folders/1r7X6Si00P0CiFhd-S9tiw7JPt38lJ3qO?usp=drive_link) (too large for github). 
+See [train_stage_three](https://github.com/mtfahey/prc_challenge/blob/main/notebooks/train_stage_three.ipynb) notebook. STAGE III model was trained via H2OAutoML over 50 RMSE-optimizing models from results of STAGE I and STAGE II as described above. Final model [can be found here](https://drive.google.com/drive/folders/1r7X6Si00P0CiFhd-S9tiw7JPt38lJ3qO?usp=drive_link) (too large for github). This file also contains prediction code for the submission file. 
+
