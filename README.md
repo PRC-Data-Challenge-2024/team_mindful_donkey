@@ -131,10 +131,13 @@ The [clean_up_stage_two](https://github.com/mtfahey/prc_challenge/blob/main/note
 See [train_stage_two](https://github.com/mtfahey/prc_challenge/blob/main/notebooks/train_stage_two.ipynb) notebook. A separate model was trained for each of 27 aircraft types. Training was aimed at maximizing RMSE across fold groups without training within a flight id. Forty models were tested using H2OAutoML for each aircraft type, with the best model (usually an ensemble) retained. Final models [can be found here](https://drive.google.com/drive/folders/1CDqsbL7leA_y6fLWr3qTBH7L7kKm8tGx?usp=drive_link) (too large for github). A test group 10 percent of training data was used to calculate an RMSE and error as a percentage of the average training TOW to be used as a feature in STAGE III.
 
 
-### Clean up data and finalize STAGE III features
+### Predict STAGE I and STAGE II, clean up data and finalize STAGE III features
 
-| field | description | percent available train | percent available submission | 
-| --- | --- | --- | --- | 
+
+
+
+| field | description | percent available train |
+| --- | --- | --- | 
 | stage_one |  | 100% |
 | stage_two_100 |  | 100% |
 | stage_two_200 | | 100% |
