@@ -56,16 +56,26 @@ df.to_parquet(
 client.close()
 ```
 
-### OpenAP features for to Stage I training
+### OpenAP features for to STAGE I training
 
 See [OpenAP notebook](https://github.com/mtfahey/prc_challenge/blob/main/notebooks/openap.ipynb). Here we am using Junzi Sun's [openap](https://github.com/junzis/openap) and [openap trajectory optimizer](https://github.com/junzis/openap-top) to: 
 1. Add OEW and MTOW features for each aircraft type. FAA data were used to fill in any missing values.
 2. Add great circle distance features for each adep/ades combination. If not available in openap, Mike Borsetti's [airportsdata](https://github.com/mborsetti/airportsdata) package was used to find lat/lngs to calculate distances. Some airports were found and added manually.
-3. Add an estimated fuel weight for the idealized trajectory between each adep/ades/aircraft type combination. If an aircraft type was not available through OpenAP, the aircraft type with the next closest average TOW in the training data was used as a replacement. If airports were not available, a linear regression of fuel weight on calculated linear distance was used as a replacement value. 
+3. Add an estimated fuel weight for the idealized trajectory between each adep/ades/aircraft type combination. If an aircraft type was not available, the aircraft type with the next closest average TOW in the training data was used as a replacement. If airports were not available, a linear regression of fuel weight on calculated linear distance was used as a replacement value. 
 
-### Create general climb trajectory features
+### Create general climb trajectory features and pre-process STAGE II features
 
-See [get_trajectory_characteristics notebook]().
+See [get_trajectory_characteristics notebook](). Here we use Xavier Olive's [traffic library](https://traffic-viz.github.io/) to process the flight trajectory data. Data were filtered and resampled at 30 seconds. Flight phases were added and fuel flow was calculated. The maximum fuel flow from each flight was calculated. 
+
+The start of the cruise phase of each flight was found and the altitude and time to cruise were recorded for use as training features. 
+
+Formulas from Yoshiki Kato's [weather_paramters](https://github.com/Yoshiki443/weather_parameters) package were used to calculate cross wind and tail wind from the provided v and u compoents. 
+
+
+
+
+
+
 
 ### Clean up data and finalize stage I features
 
