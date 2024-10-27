@@ -121,13 +121,17 @@ The training RMSE for this model was 2036, the cross-validation RMSE was 2753 an
 
 | field | description | percent available |
 | --- | --- | --- | 
-| sec_since_takeoff |  | 100% |
-| altitude |  | 100% |
-| groundspeed | | 100% |
-| vertical_rate |  | 100% |
-| temperature |  | 100% |
-| specific_humidity |  | 100% |
-| tail_wind |  | 100% |
-| cross_wind |  | 100% |
-| fold_group | | 100% |
+| stage_one |  | 100% |
+| stage_two_100 |  | 100% |
+| stage_two_200 | | 100% |
+| stage_two_300 |  | 100% |
+| stage_two_400 |  | 100% |
+| stage_two_500 |  | 100% |
+| stage_two_600 |  | 100% |
+| stage_two_700 |  | 100% |
+| stage_two_800 | | 100% |
+| stage_two_900 | | 100% |
+| stage_two_1000 | | 100% |
+| aircraft_type | | 100% |
+| percent_error | | 100% |
 | tow |(float) TOW provided by challenge dataset, kg rounded| 84% |
