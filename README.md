@@ -131,24 +131,23 @@ The [clean_up_stage_two](https://github.com/mtfahey/prc_challenge/blob/main/note
 See [train_stage_two](https://github.com/mtfahey/prc_challenge/blob/main/notebooks/train_stage_two.ipynb) notebook. A separate model was trained for each of 27 aircraft types. Training was aimed at maximizing RMSE across fold groups without training within a flight id. Forty models were tested using H2OAutoML for each aircraft type, with the best model (usually an ensemble) retained. Final models [can be found here](https://drive.google.com/drive/folders/1CDqsbL7leA_y6fLWr3qTBH7L7kKm8tGx?usp=drive_link) (too large for github). A test group 10 percent of training data was used to calculate an RMSE and error as a percentage of the average training TOW to be used as a feature in STAGE III.
 
 
-### Predict STAGE I and STAGE II, clean up data and finalize STAGE III features
+### Predict STAGE I, STAGE II, clean up data and finalize STAGE III features
 
-
-
+See [predict_stage_two](https://github.com/mtfahey/prc_challenge/blob/main/notebooks/predict_stage_two.ipynb) notebook. Stage II predictions were binned by median value at 100 second intervals and saved as features for STAGE III. STAGE II errors and STAGE I predictions were also incldued as features for STAGE III. 
 
 | field | description | percent available train |
 | --- | --- | --- | 
-| stage_one |  | 100% |
-| stage_two_100 |  | 100% |
-| stage_two_200 | | 100% |
-| stage_two_300 |  | 100% |
-| stage_two_400 |  | 100% |
-| stage_two_500 |  | 100% |
-| stage_two_600 |  | 100% |
-| stage_two_700 |  | 100% |
-| stage_two_800 | | 100% |
-| stage_two_900 | | 100% |
-| stage_two_1000 | | 100% |
-| aircraft_type | | 100% |
-| percent_error | | 100% |
-| tow |(float) TOW provided by challenge dataset, kg rounded| 84% |
+| stage_one |(float) predicted TOW from STAGE I model| 100% |
+| stage_two_100 |(float) median predicted TOW from seconds 0-100 of STAGE II model| 100% |
+| stage_two_200 |(float) median predicted TOW from seconds 100-200 of STAGE II model| 94% |
+| stage_two_300 |(float) median predicted TOW from seconds 200-300 of STAGE II model| 94% |
+| stage_two_400 |(float) median predicted TOW from seconds 300-400 of STAGE II model| 94% |
+| stage_two_500 |(float) median predicted TOW from seconds 400-500 of STAGE II model| 93% |
+| stage_two_600 |(float) median predicted TOW from seconds 500-600 of STAGE II model| 92% |
+| stage_two_700 |(float) median predicted TOW from seconds 600-700 of STAGE II model| 90% |
+| stage_two_800 |(float) median predicted TOW from seconds 700-800 of STAGE II model| 86% |
+| stage_two_900 |(float) median predicted TOW from seconds 800-900 of STAGE II model| 84% |
+| stage_two_1000 |(float) median predicted TOW from seconds 900-1000 of STAGE II model| 78% |
+| aircraft_type |(str) aircraft type provided in challenge dataset | 100% |
+| percent_error |(float) RMSE test dataset error as a percentage of the median TOW for aircraft type | 100% |
+| tow |(float) TOW provided by challenge dataset, kg rounded| 100% |
