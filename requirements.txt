@@ -19,3 +19,9 @@ geopandas
 warnings
 matplotlib
 osmnx
+traffic
+multiprocessing
+tqdm
+shutil
+pathlib
+glob
