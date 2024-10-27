@@ -69,7 +69,9 @@ See [get_trajectory_characteristics notebook](https://github.com/mtfahey/prc_cha
 
 The start of the cruise phase of each flight was found and the altitude and time to cruise were recorded for use as training features. 
 
-Formulas from Yoshiki Kato's [weather_paramters](https://github.com/Yoshiki443/weather_parameters) package were used to calculate cross wind and tail wind from the provided v and u compoents. 
+Formulas from Yoshiki Kato's [weather_paramters](https://github.com/Yoshiki443/weather_parameters) package were used to calculate cross wind and tail wind from the provided v and u compoents.
+
+Filtered climb phase 30-second trajectory data were saved for use in Stage II.  
 
 ### Clean up data and finalize STAGE I features
 
@@ -103,29 +105,33 @@ The final STAGE I training features and descriptions are listed below:
 
 ### Train STAGE I model
 
-See [train_stage_one](https://github.com/mtfahey/prc_challenge/blob/main/notebooks/train_stage_one.ipynb) notebook. We used [H2O AutoML](https://pages.github.com/](https://docs.h2o.ai/h2o/latest-stable/h2o-docs/automl.html)) to test 30 possible models and assemble 16 into an ensemble model. The model models were tested using fold cross validation and a GLM metalearner algorithm. Flight ids were divided into fold groups to prevent cross-training within a flight. Ultimately, 8/10 GM models, 6/10 XGBoost models, 1/2 DRF models and 1/7 DeepLearning models were incorporated into the ensemble. One GLM model was tested but not included. 
+See [train_stage_one](https://github.com/mtfahey/prc_challenge/blob/main/notebooks/train_stage_one.ipynb) notebook. We used [H2O AutoML](https://pages.github.com/](https://docs.h2o.ai/h2o/latest-stable/h2o-docs/automl.html)) to test 30 possible models and assemble 16 into an ensemble model. The model models were tested using 5-fold cross validation and a GLM metalearner algorithm.  Ultimately, 8/10 GM models, 6/10 XGBoost models, 1/2 DRF models and 1/7 DeepLearning models were incorporated into the ensemble. One GLM model was tested but not included. 
 
 The training RMSE for this model was 2036, the cross-validation RMSE was 2753 and the test RMSE was 2749. The final STAGE I model used for submission [can be found here](https://drive.google.com/drive/folders/1epyKt1HCyRLLWGmdF4-Q0Zjyqk_vF64P?usp=drive_link) (too large for github). 
 
 ### Clean up data and finalize STAGE II features
 
-
+The [clean_up_stage_two](https://github.com/mtfahey/prc_challenge/blob/main/notebooks/clean_up_stage_two.ipynb) notebook makes csv training sets from parquet files for each aircraft type. Flight ids were divided into 10 fold groups to prevent cross-training within each flight. The features used to train a separate model for each aircraft type are listed below:
 
 | field | description | percent available |
 | --- | --- | --- | 
-| sec_since_takeoff |  | 100% |
-| altitude |  | 100% |
-| groundspeed | | 100% |
-| vertical_rate |  | 100% |
-| temperature |  | 100% |
-| specific_humidity |  | 100% |
-| tail_wind |  | 100% |
-| cross_wind |  | 100% |
-| fold_group | | 100% |
-| tow |(float) TOW provided by challenge dataset, kg rounded| 84% |
+| sec_since_takeoff | (int) seconds since takeoff, calculated from each trajectory timestamp | 100% |
+| altitude | (float) altitude in ft, provided in original data | 100% |
+| groundspeed | (int) groundspeed in kt, provided in original data| 100% |
+| vertical_rate | (int) vertical rate in ft/min, provided in original data | 100% |
+| temperature | (float) temperature in K, provided in original data | 100% |
+| specific_humidity | (float) specific humidity in g/kg, provided in original data | 100% |
+| tail_wind | (float) calculated tail wind in m/s  | 100% |
+| cross_wind | (float) calculated cross wind in m/s  | 100% |
+| fold_group | (int) fold group to avoid training across flight ids | 100% |
+| tow |(float) TOW provided by challenge dataset, kg rounded| 100% |
+
+### Train STAGE II models
+
+See [train_stage_two](https://github.com/mtfahey/prc_challenge/blob/main/notebooks/train_stage_two.ipynb) notebook. A separate model was trained for each of 27 aircraft types. Training was aimed at maximizing RMSE across fold groups without training within a flight id. Forty models were tested using H2OAutoML for each aircraft type, with the best model (usually an ensemble) retained. Final models [can be found here](https://drive.google.com/drive/folders/1CDqsbL7leA_y6fLWr3qTBH7L7kKm8tGx?usp=drive_link) (too large for github). A test group 10 percent of training data was used to calculate an RMSE and error as a percentage of the average training TOW to be used as a feature in STAGE III.
 
 
-### Clean up data and finalize stage III features
+### Clean up data and finalize STAGE III features
 
 | field | description | percent available train | percent available submission | 
 | --- | --- | --- | --- | 
