@@ -73,7 +73,9 @@ Formulas from Yoshiki Kato's [weather_paramters](https://github.com/Yoshiki443/w
 
 ### Clean up data and finalize STAGE I features
 
-See [clean_up_phase_one notebook](https://github.com/mtfahey/prc_challenge/blob/main/notebooks/clean_up_stage_one.ipynb). This notebook restructures the data and adds some additional features, including the day of the week, the hour in local time, and an adjusted cargo load weight value based on the average monthly [aircraft load factors in Europe](https://github.com/mtfahey/prc_challenge/blob/main/data/passenger_load_factors.csv) extracted from monthly IATA publications to adjust for daily, weekly and monthly variation. I have also included some code here for replacing adep/ades values in the submission data that did not appear in the training data, but this does not appear to have improved the output and was not included in the final model. 
+See [clean_up_phase_one notebook](https://github.com/mtfahey/prc_challenge/blob/main/notebooks/clean_up_stage_one.ipynb). This notebook restructures the data and adds some additional features, including the day of the week, the hour in local time, and an adjusted cargo load weight value based on the average monthly [aircraft load factors in Europe](https://github.com/mtfahey/prc_challenge/blob/main/data/passenger_load_factors.csv) extracted from monthly IATA publications to adjust for daily, weekly and monthly variation. I have also included some code here for replacing adep/ades values in the submission data that did not appear in the training data, but this does not appear to have improved the output and was not included in the final model.
+
+The final STAGE I training features and descriptions are listed below:
 
 | field | description | percent available |
 | --- | --- | --- | 
