@@ -151,3 +151,7 @@ See [predict_stage_two](https://github.com/mtfahey/prc_challenge/blob/main/noteb
 | aircraft_type |(str) aircraft type provided in challenge dataset | 100% |
 | percent_error |(float) RMSE test dataset error as a percentage of the median TOW for aircraft type | 100% |
 | tow |(float) TOW provided by challenge dataset, kg rounded| 100% |
+
+### Train STAGE III model
+
+See [train_stage_three](https://github.com/mtfahey/prc_challenge/blob/main/notebooks/train_stage_three.ipynb) notebook. STAGE III model was trained via H2OAutoML over 50 RMSE-optimizing models from results of STAGE I and STAGE II as described above. Final model [can be found here](https://drive.google.com/drive/folders/1r7X6Si00P0CiFhd-S9tiw7JPt38lJ3qO?usp=drive_link) (too large for github). 
