@@ -119,8 +119,8 @@ The training RMSE for this model was 2036, the cross-validation RMSE was 2753 an
 
 ### Clean up data and finalize stage III features
 
-| field | description | percent available |
-| --- | --- | --- | 
+| field | description | percent available train | percent available submission | 
+| --- | --- | --- | --- | 
 | stage_one |  | 100% |
 | stage_two_100 |  | 100% |
 | stage_two_200 | | 100% |
