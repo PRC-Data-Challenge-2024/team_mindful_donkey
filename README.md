@@ -15,9 +15,9 @@ Stage II model accuracies | &rarr; |
 
 ### Model accuracy
 
-The final TOW submission estimates for this model have a RMSE of 2,683, compared to a test data RMSE of 2,398.
+The final TOW submission estimates for this model have a RMSE of 2683, compared to a test data RMSE of 2398.
 
-STAGE I alone gives us a submission RSME of TK. Using the median of STAGE II (or STAGE I if trajectories were not available) gives an RSME of TK. STAGE III improves the predictions to TK. 
+STAGE I alone gives us a submission RSME of 2719. Using the median of STAGE II (or STAGE I if trajectories were not available) gives an RSME of 6140. Combining both models as part of STAGE III improves the predictions to 2683. 
 
 
 ## Model creation
