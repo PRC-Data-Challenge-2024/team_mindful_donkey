@@ -4,7 +4,7 @@
 
 This model was created for the [PRC Challenge](https://ansperformance.eu/study/data-challenge/) by Team Mindful Donkey. This work is copyrighted by Mark Fahey (2024) and free to use under the terms of the GNU GPLv3 license ([see gpl-3.0.txt](https://github.com/mtfahey/prc_challenge/blob/main/gpl-3.0.txt)). 
 
-The model has a three stage structure. The first stage is an supervised learning ensemble model trained on the data available for each flight _excluding_ the trajectory data. This is essentially a baseline model that estimates the tow based on the expected fuel amount and cargo capacity for each flight. The second stage is a collection of models trained on the minute-by-minute cleaned trajectory data for the climb section of each flight, with a different ensemble model for each aircraft type. The third stage integrates the first and second stages and also includes some summary data the accuracy of the stage two models. 
+The model has a three stage structure. The first stage is an supervised learning ensemble model trained on the data available for each flight _excluding_ the trajectory data. This is essentially a baseline model that estimates the TOW based on the expected fuel amount and cargo capacity for each flight, as well as some macro data about the general shape of the climb trajectory. The second stage is a collection of models trained on the minute-by-minute cleaned trajectory data for the climb section of each flight, with a different ensemble model for each aircraft type. The third stage integrates the first and second stages and also includes some summary data the accuracy of the stage two models. 
 
 ||||||
 | --- | --- | --- | --- | --- |
@@ -56,16 +56,16 @@ df.to_parquet(
 client.close()
 ```
 
-### Add OpenAP features to Stage I data
+### OpenAP features for to Stage I training
 
 See [OpenAP notebook](https://github.com/mtfahey/prc_challenge/blob/main/notebooks/openap.ipynb). Here we am using Junzi Sun's [openap](https://github.com/junzis/openap) and [openap trajectory optimizer](https://github.com/junzis/openap-top) to: 
 1. Add OEW and MTOW features for each aircraft type. FAA data were used to fill in any missing values.
 2. Add great circle distance features for each adep/ades combination. If not available in openap, Mike Borsetti's [airportsdata](https://github.com/mborsetti/airportsdata) package was used to find lat/lngs to calculate distances. Some airports were found and added manually.
 3. Add an estimated fuel weight for the idealized trajectory between each adep/ades/aircraft type combination. If an aircraft type was not available through OpenAP, the aircraft type with the next closest average TOW in the training data was used as a replacement. If airports were not available, a linear regression of fuel weight on calculated linear distance was used as a replacement value. 
 
-### Create features from flight path data
+### Create general climb trajectory features
 
-See get_trajectory_characteristics.ipynb
+See [get_trajectory_characteristics notebook]().
 
 ### Clean up data and finalize stage I features
 
