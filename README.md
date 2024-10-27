@@ -65,21 +65,15 @@ See [OpenAP notebook](https://github.com/mtfahey/prc_challenge/blob/main/noteboo
 
 ### Create general climb trajectory features and pre-process STAGE II features
 
-See [get_trajectory_characteristics notebook](). Here we use Xavier Olive's [traffic library](https://traffic-viz.github.io/) to process the flight trajectory data. Data were filtered and resampled at 30 seconds. Flight phases were added and fuel flow was calculated. The maximum fuel flow from each flight was calculated. 
+See [get_trajectory_characteristics notebook](https://github.com/mtfahey/prc_challenge/blob/main/notebooks/get_trajectory_characteristics.ipynb). Here we use Xavier Olive's [traffic library](https://traffic-viz.github.io/) to process the flight trajectory data. Data were filtered and resampled at 30 seconds. Flight phases were added and fuel flow was calculated. The maximum fuel flow from each flight was calculated. 
 
 The start of the cruise phase of each flight was found and the altitude and time to cruise were recorded for use as training features. 
 
 Formulas from Yoshiki Kato's [weather_paramters](https://github.com/Yoshiki443/weather_parameters) package were used to calculate cross wind and tail wind from the provided v and u compoents. 
 
-
-
-
-
-
-
 ### Clean up data and finalize stage I features
 
-See clean_up_phase_one.ipynb
+See clean_up_phase_one notebook. 
 
 | field | description | percent available |
 | --- | --- | --- | 
