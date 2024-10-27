@@ -101,11 +101,11 @@ The final STAGE I training features and descriptions are listed below:
 | est_load_lf_adjusted | (float) mtow_fill minus oew_fill minus total_fuel_fill to get the estimated possible max passenger load, multiplied by the average monthly load factor in Europe for takeoff month  | 100% |
 | est_tow | (float) est_load_lf_adjusted plus oew_fill plus total_fuel_fill for an estimated total TOW | 100% |
 
-### Train phase one model
+### Train STAGE I model
 
-See train_stage_one.ipynb
+See [train_stage_one](https://github.com/mtfahey/prc_challenge/blob/main/notebooks/train_stage_one.ipynb) notebook. 
 
-We used [H2O AutoML](https://pages.github.com/](https://docs.h2o.ai/h2o/latest-stable/h2o-docs/automl.html)) to test 30 possible models and assemble 16 into an ensemble model. The model models were tested using 5-fold cross validation and a GLM metalearner algorithm. Ultimately, 8/10 GM models, 6/10 XGBoost models, 1/2 DRF models and 1/7 DeepLearning models were incorporated into the ensemble. One GLM model was tested but not included. 
+We used [H2O AutoML](https://pages.github.com/](https://docs.h2o.ai/h2o/latest-stable/h2o-docs/automl.html)) to test 30 possible models and assemble 16 into an ensemble model. The model models were tested using fold cross validation and a GLM metalearner algorithm. Flight ids were divided into fold groups to prevent cross-training within a flight. Ultimately, 8/10 GM models, 6/10 XGBoost models, 1/2 DRF models and 1/7 DeepLearning models were incorporated into the ensemble. One GLM model was tested but not included. 
 
 The training RMSE for this model was 2036, the cross-validation RMSE was 2753 and the test RMSE was 2749. 
 
